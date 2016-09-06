@@ -1,0 +1,37 @@
+1.数据库设计
+ 	1) 数据量较小，使用sqlite
+ 	2) 表设计
+ 		a.每篇文章对应的表  article
+ 			articleID - 每篇文章对应的ID
+			theme - 文章的标题
+			content - 内容
+			kindNum - 分类
+			state - 当前状态
+			user - 所属用户
+			makedate - 最后修改日期
+			maketime - 最后修改时间
+			
+ 		b.文章类别表 kind
+ 			 kindID 
+ 			 kindNum
+ 			 kindName
+ 			 makedate
+ 			 maketime
+ 		c.文章状态表
+ 			stateID
+ 			stateNum
+ 			stateName
+ 			makedate
+ 			maketime
+ 		
+2.模式设计
+	采用MVC模式，不采用框架，纯手工
+	
+2.前端设计
+	前端主要涉及两个页面，列表页和文章详细页面
+	
+3.后台设计
+	所有文章(即文章列表，显示字段包括 标题 作者 分类 更新日期 )
+	写文章
+
+
