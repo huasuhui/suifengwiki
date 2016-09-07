@@ -65,6 +65,10 @@
 		  focus: true,               // set focus to editable area after initializing summernote
 		  lang: 'zh-CN'// default: 'en-US'
 		});
+
+		function save(){
+	        alert($('#summernote').summernote('code'))
+		}
 		
 	</script>
 </c:if>

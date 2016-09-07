@@ -27,7 +27,7 @@
 					  		<br>
 	
 					  		<div>
-					  			<button type="button" class="btn btn-primary btn-small right" disabled="disabled">发布</button>
+					  			<button type="button" class="btn btn-primary btn-small right" onclick="save()">发布</button>
 					  			
 					  		</div>
 					  		
@@ -88,8 +88,7 @@
 					    <input type="text" class="form-control" placeholder="在此输入标题" aria-describedby="basic-addon1">
 					</div>
 					
-					<div id="summernote">hello,summernote</div>
-					
+					<div id="summernote">hello,summernote</div>					
 				</div>
 				
 				
