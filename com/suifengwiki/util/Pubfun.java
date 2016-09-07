@@ -1,4 +1,4 @@
-package com.suifengwiki.util;
+package com.suifengwiki.Util;
 
 public class Pubfun {
 
