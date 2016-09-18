@@ -2,11 +2,9 @@ package com.suifengwiki.Dao;
 
 public class ArticleTag {
 	
-	private String articleTagId;
+	private int articleTagId;
 	
 	private String articleTagName;
-	
-	private String tagShortName;
 	
 	private String makedate;
 	

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Article {
 	
-	private String articleId;
+	private int articleId;
 	
 	private String theme;
 	
@@ -18,7 +18,6 @@ public class Article {
 	
 	private String pageview;
 	
-	//ÒÑ·¢²¼£¬²Ý¸å£¬´ýÉ¾³ý
 	private String state;
 	
 	private String makedate;

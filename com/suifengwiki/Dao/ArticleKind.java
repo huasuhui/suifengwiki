@@ -2,7 +2,7 @@ package com.suifengwiki.Dao;
 
 public class ArticleKind {
 	
-	private String articleKindId;
+	private int articleKindId;
 	
 	private String articleKindName;
 	

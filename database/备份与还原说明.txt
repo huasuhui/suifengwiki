@@ -1,0 +1,4 @@
+--备份
+mysqldump -u root -p test > D:\backup.sql
+--还原
+mysql -u root -p < C:\backup.sql
