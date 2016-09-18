@@ -91,7 +91,7 @@
 					<div id="summernote">hello,summernote</div>					
 				</div>
 				
-				
+				<input type="hidden" id="content" name="content">
 			</div>
 		
 	

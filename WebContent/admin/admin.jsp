@@ -57,8 +57,6 @@
 		$.sidebarMenu($('.sidebar-menu'));
 </script>
 
-<s:debug></s:debug>
-
 <c:if test="${requestScope.page=='articleEdit' }">
 	<script>
 		$('#summernote').summernote({
@@ -70,11 +68,12 @@
 		});
 
 		function save(){
-	        alert($('#summernote').summernote('code'))
+	        $('#content').value = $('#summernote').summernote('code');
+	        alert($('#content').value);
 		}
 		
 	</script>
 </c:if>
-...${#request.page}
+
 </body>
 </html>
