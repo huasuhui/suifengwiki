@@ -85,13 +85,14 @@
 			
 				<div id="left">
 					<div id="input">
-					    <input type="text" class="form-control" placeholder="在此输入标题" aria-describedby="basic-addon1">
+					    <input type="text" class="form-control" name="theme" placeholder="在此输入标题" aria-describedby="basic-addon1">
 					</div>
 					
 					<div id="summernote">hello,summernote</div>					
 				</div>
 				
-				<input type="hidden" id="content" name="content" value="">
+				<input type="hidden" id="content" name="content" value="huasuhui2">
+				<input type="hidden" id="content" name="username" value="huasuhui">
 			</div>
 						
 	</form>			

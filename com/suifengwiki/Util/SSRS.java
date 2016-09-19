@@ -1,4 +1,4 @@
-package com.suifengwiki.Dao;
+package com.suifengwiki.Util;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.suifengwiki.Dao;
+package com.suifengwiki.Beans;
 
 public class ArticleComment {
 	
@@ -17,7 +17,6 @@ public class ArticleComment {
 	private String modifytime;
 
 	public ArticleComment() {
-		// TODO Auto-generated constructor stub
 	}
 
 }

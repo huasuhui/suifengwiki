@@ -1,31 +1,13 @@
 package com.suifengwiki.Action;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Map;
-
-import org.apache.struts2.interceptor.ParameterAware;
-import org.apache.struts2.interceptor.RequestAware;
-import org.apache.struts2.views.freemarker.tags.SetModel;
-
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+import com.suifengwiki.Beans.Article;
 
-public class ArticleAction extends ActionSupport {
+public class ArticleAction extends ActionSupport implements ModelDriven<Article> {
+
+	private static final long serialVersionUID = 1L;
 	
-	private String content;
-	
-	
-
-
-	public String getContent() {
-		return content;
-	}
-
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
 
 	public ArticleAction() {
 		// TODO Auto-generated constructor stub
@@ -33,15 +15,20 @@ public class ArticleAction extends ActionSupport {
 	
 	
 	public String save(){
-		System.out.println(content);
+		System.out.println(article);
+
 		return "save";
 	}
 	
 	public String edit(){
 		return "edit";
 	}
-
 	
+	private Article article = new Article();
+
+	public Article getModel(){ 
+		return article;
+	} 
 	
 
 }

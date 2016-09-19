@@ -77,12 +77,9 @@
 		  focus: true,               // set focus to editable area after initializing summernote
 		  lang: 'zh-CN'// default: 'en-US'
 		});
-
+		
 		function save(){
-			$("#content").val($('#summernote').summernote('code'));
-			$("#content").value = $('#summernote').summernote('code');
-			$("#content").attr("value",$('#summernote').summernote('code'));
-	        alert($("#content").attr("value"));
+			$("#content[value]").val($('#summernote').summernote('code'))
 	        $("form").submit();
 		}
 		

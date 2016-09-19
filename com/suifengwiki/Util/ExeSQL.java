@@ -1,4 +1,4 @@
-package com.suifengwiki.Dao;
+package com.suifengwiki.Util;
 
 public class ExeSQL {
 	

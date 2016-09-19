@@ -24,7 +24,7 @@
  		</action>
  		
  		<action name="editArticle_save" class="com.suifengwiki.Action.ArticleAction" method="save">
- 			<result name="save">/index.jsp</result>
+ 			<result name="save" type="redirect">/index.jsp</result>
  		</action>
  		
     </package>
