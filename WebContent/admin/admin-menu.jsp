@@ -11,7 +11,7 @@
 						</a>
 						<ul class="treeview-menu">
 		  					<li><a href="#"><i class="fa fa-circle-o"></i> 所有文章</a></li>
-			  				<li><a href="EditArticle"><i class="fa fa-circle-o"></i> 写文章</a></li>
+			  				<li><a href="editArticle"><i class="fa fa-circle-o"></i> 写文章</a></li>
 			  				<li><a href="#"><i class="fa fa-circle-o"></i> 分类目录</a></li>
 			  				<li><a href="#"><i class="fa fa-circle-o"></i> 标签</a></li>
 						</ul>

@@ -16,8 +16,15 @@
  		</action>
  		
  		<!-- 编辑文章 -->
- 		<action name="EditArticle" class="com.suifengwiki.Action.ArticleAction" method="edit">
- 			<result name="edit">/admin/admin.jsp</result>
+ 		<action name="editArticle_edit" class="com.suifengwiki.Action.ArticleAction" method="edit">
+ 			<result name="edit" type="redirect">
+				<param name="location">/admin/admin.jsp</param>
+ 				<param name="page">articleEdit</param>
+			</result>
+ 		</action>
+ 		
+ 		<action name="editArticle_save" class="com.suifengwiki.Action.ArticleAction" method="save">
+ 			<result name="save">/index.jsp</result>
  		</action>
  		
     </package>

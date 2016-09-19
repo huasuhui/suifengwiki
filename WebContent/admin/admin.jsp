@@ -36,10 +36,21 @@
 			
 			<!-- main -->
 			<div id="admin-middle-main">
-			
+			<c:if test="${param.page=='main' }">
+				<%@include file="admin-main.jsp" %>
+			</c:if>
+			<c:if test="${param.page=='articleList' }">
+				<%@include file="admin-articleList.jsp" %>
+			</c:if>
+			<c:if test="${param.page=='articleEdit' }">
+				<%@include file="admin-articleEdit.jsp" %>
+			</c:if>
+			<c:if test="${param.page=='setup' }">
+				<%@include file="admin-setup.jsp" %>
+			</c:if>
 <%-- 				<%@include file="admin-main.jsp" %> --%>
 <%-- 				<%@include file="admin-articleList.jsp" %> --%>
-				<%@include file="admin-articleEdit.jsp" %>
+<%-- 				<%@include file="admin-articleEdit.jsp" %> --%>
 <%-- 				<%@include file="setup.jsp" %> --%>
 
 			</div>
@@ -57,7 +68,7 @@
 		$.sidebarMenu($('.sidebar-menu'));
 </script>
 
-<c:if test="${requestScope.page=='articleEdit' }">
+<c:if test="${param.page=='articleEdit' }">
 	<script>
 		$('#summernote').summernote({
 		  height: 435,                 // set editor height
@@ -68,8 +79,11 @@
 		});
 
 		function save(){
-	        $('#content').value = $('#summernote').summernote('code');
-	        alert($('#content').value);
+			$("#content").val($('#summernote').summernote('code'));
+			$("#content").value = $('#summernote').summernote('code');
+			$("#content").attr("value",$('#summernote').summernote('code'));
+	        alert($("#content").attr("value"));
+	        $("form").submit();
 		}
 		
 	</script>

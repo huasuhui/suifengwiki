@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div id="admin-articleEdit">			
-	<form role="form">
+	<form role="form" action="editArticle_save" method="post">
 		
 			<div id="theme-name">
 				<p>撰写新文章</p>
@@ -91,15 +91,9 @@
 					<div id="summernote">hello,summernote</div>					
 				</div>
 				
-				<input type="hidden" id="content" name="content">
+				<input type="hidden" id="content" name="content" value="">
 			</div>
-		
-	
-		
-					
-					
-
-					
+						
 	</form>			
 				
 </div>

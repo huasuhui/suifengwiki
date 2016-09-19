@@ -8,9 +8,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
-
 import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
 
 public class Conn {
 	
@@ -20,10 +18,7 @@ public class Conn {
 	private static String password;
 	private static Connection conn;
 	
-
-	public Conn() {
-		getConfig();
-	}
+	private static String connConfig = "D:\\Development\\Git\\suifengwiki\\com\\suifengwiki\\config\\conn.properties";
 	
 	static{
 		getConfig();
@@ -34,7 +29,7 @@ public class Conn {
 		
 		try {
 			//STEP 1: Register JDBC driver
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(Driver);
 			//STEP 2: Open a connection
 			conn = (Connection) DriverManager.getConnection(url,username,password);
 			
@@ -67,7 +62,7 @@ public class Conn {
 		System.out.println("config...");
 		Properties prop = new Properties();
 		
-		File file = new File("D:\\Development\\Git\\suifengwiki\\com\\suifengwiki\\config\\conn.properties");
+		File file = new File(connConfig);
 		try {
 			InputStream connConfig = new FileInputStream(file);
 			prop.load(connConfig);
