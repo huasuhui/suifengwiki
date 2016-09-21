@@ -28,7 +28,8 @@ public class ArticleDao {
 		author = article.getAuthor();
 		articleKindId = article.getArticleKindId();
 		articleTag = article.getArticleTag();
-		sql = "insert into article(theme,content,author,articleKindId,makedate,) values()";
+		
+		sql = "insert into article(theme,content,author) values("+ theme +","+ content +","+ author +",)";
 		try {
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
 			int result = ps.executeUpdate();
