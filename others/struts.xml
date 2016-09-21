@@ -23,8 +23,22 @@
 			</result>
  		</action>
  		
+ 		<!-- 保存文章 -->
  		<action name="editArticle_save" class="com.suifengwiki.Action.ArticleAction" method="save">
  			<result name="save" type="redirect">/index.jsp</result>
+ 		</action>
+ 		
+ 		<!-- 查询文章 -->
+ 		<action name="article_query" class="com.suifengwiki.Action.ArticleAction" method="query">
+ 			<result name="query" type="redirect">/index.jsp</result>
+ 		</action>
+ 		
+ 		<!-- 所有文章 -->
+ 		<action name="article_list" class="com.suifengwiki.Action.ArticleAction" method="list">
+ 			<result name="list" type="redirect">
+				<param name="location">/admin/admin.jsp</param>
+ 				<param name="page">articleList</param>
+			</result>
  		</action>
  		
     </package>

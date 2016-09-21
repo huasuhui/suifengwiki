@@ -13,7 +13,6 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 	
 
 	public ArticleAction() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	
@@ -25,8 +24,20 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 		return "save";
 	}
 	
+	public String query(){
+		System.out.println(article);
+		articleDao = new ArticleDao(article);
+		articleDao.articleSave();
+
+		return "save";
+	}
+	
 	public String edit(){
 		return "edit";
+	}
+	
+	public String list(){
+		return "list";
 	}
 	
 	private Article article = new Article();

@@ -15,7 +15,7 @@ public class Conn {
 	private static String url;
 	private static String username;
 	private static String password;
-	private static Connection conn;
+	public static Connection conn;
 	
 	private static String connConfig;
 	
@@ -25,19 +25,24 @@ public class Conn {
 	
 	public static Connection getConn(){
 		
+		if(Driver == null){
+			getConfig();
+		}
 		
-		try {
-			//STEP 1: Register JDBC driver
-			Class.forName(Driver);
-			
-			//STEP 2: Open a connection
-			conn = (Connection) DriverManager.getConnection(url,username,password);
-			
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(conn == null){
+			try {
+				//STEP 1: Register JDBC driver
+				Class.forName(Driver);
+				
+				//STEP 2: Open a connection
+				conn = (Connection) DriverManager.getConnection(url,username,password);
+				
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		return conn;
@@ -69,11 +74,18 @@ public class Conn {
 	}
 	
 	private static String getConfigFilePath(){
-		return System.getProperty("user.dir")+"/build/classes/com/suifengwiki/config/conn.properties";
+		String path=Thread.currentThread().getContextClassLoader().getResource("").toString();  
+        path=path.replace('/', '\\'); // 将/换成\  
+        path=path.replace("file:", ""); //去掉file:  
+//        path=path.replace("classes\\", ""); //去掉class\  
+        path=path.substring(1); //去掉第一个\,如 \D:\JavaWeb...  
+        System.out.println(path); 
+		return path + "com/suifengwiki/config/conn.properties";
 	}
 
 	public static void main(String[] args) {
 		Conn.getConn();
+ 
 	}
 
 }
