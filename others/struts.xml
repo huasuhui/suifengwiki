@@ -41,6 +41,30 @@
 			</result>
  		</action>
  		
+ 		<!-- 草稿 -->
+ 		<action name="article_draft" class="com.suifengwiki.Action.ArticleAction" method="draft">
+ 			<result name="draft" type="redirect">
+				<param name="location">/admin/admin.jsp</param>
+ 				<param name="page">articleDraftList</param>
+			</result>
+ 		</action>
+ 		
+ 		<!-- 常规设置 -->
+ 		<action name="article_commonSetup" class="com.suifengwiki.Action.SetupAction" method="commonSetup">
+ 			<result name="commonSetup" type="redirect">
+				<param name="location">/admin/admin.jsp</param>
+ 				<param name="page">commonSetup</param>
+			</result>
+ 		</action>
+ 		
+ 		<!-- 修改密码 -->
+ 		<action name="article_passSetup" class="com.suifengwiki.Action.SetupAction" method="passSetup">
+ 			<result name="passSetup" type="redirect">
+				<param name="location">/admin/admin.jsp</param>
+ 				<param name="page">passSetup</param>
+			</result>
+ 		</action>
+ 		
     </package>
 
 </struts>

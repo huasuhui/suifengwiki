@@ -36,7 +36,7 @@
 		  					<i class="fa fa-dashboard"></i> <span>设置</span> <i class="fa fa-angle-right pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-		  					<li><a href="#"><i class="fa fa-circle-o"></i> 常规设置</a></li>
+		  					<li><a href="article_commonSetup"><i class="fa fa-circle-o"></i> 常规设置</a></li>
 			  				<li><a href="#"><i class="fa fa-circle-o"></i> 修改密码</a></li>
 						</ul>
 	  				</li>

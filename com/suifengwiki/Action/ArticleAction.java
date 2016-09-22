@@ -40,6 +40,10 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 		return "list";
 	}
 	
+	public String draft(){
+		return "draft";
+	}
+	
 	private Article article = new Article();
 
 	public Article getModel(){ 

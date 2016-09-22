@@ -45,7 +45,7 @@
 			<c:if test="${param.page=='articleEdit' }">
 				<%@include file="admin-articleEdit.jsp" %>
 			</c:if>
-			<c:if test="${param.page=='setup' }">
+			<c:if test="${param.page=='commonSetup' }">
 				<%@include file="admin-setup.jsp" %>
 			</c:if>
 <%-- 				<%@include file="admin-main.jsp" %> --%>
