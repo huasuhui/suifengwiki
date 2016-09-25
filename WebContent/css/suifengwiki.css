@@ -39,6 +39,10 @@
 	padding-left: 1em;
 }
 
+#content {
+	border-bottom: 0.1em solid #ccc;
+}
+
 #footer {
 	text-align:center;
 	margin-top: 0.3em;

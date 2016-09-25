@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <div id="admin-articleEdit">			
 	<form role="form" action="editArticle_save" method="post">
 		
@@ -64,6 +65,8 @@
 						    <div id="tag">
 						    		<input type="text" name="tag">
 						    		<button>添加</button>
+						    		<br><br>
+						    		<strong>本文标签：</strong>
 						    	</div>
 						  </div>
 					</div>
@@ -75,7 +78,11 @@
 					    <input type="text" class="form-control" name="theme" placeholder="在此输入标题" aria-describedby="basic-addon1">
 					</div>
 					
-					<div id="summernote">hello,summernote</div>					
+					<div id="summernote">
+						<c:if test="${ not empty requestScope.article }">
+							${requestScope.article.content }
+						</c:if>
+					</div>					
 				</div>
 				
 				<input type="hidden" id="content" name="content" value="huasuhui2">

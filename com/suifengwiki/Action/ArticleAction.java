@@ -42,6 +42,12 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 	}
 	
 	public String edit(){
+		System.out.println(article);
+		articleDao = new ArticleDao(article);
+		List<Article> articleResult = articleDao.articleQuery(article.getArticleId()+"");
+		if(articleResult != null && articleResult.size()>0){
+			requestMap.put("articleResult", articleResult.get(0));
+		}
 		return "edit";
 	}
 	

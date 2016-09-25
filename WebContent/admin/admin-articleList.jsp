@@ -7,6 +7,7 @@
 		<p>文章列表</p>
 	</div>
 	<div id="articleListOperate">
+		<a href="#">编辑</a>
 		<a href="#">回收站</a>
 		<a href="#">草稿箱</a>
 		<a href="#">分类查看</a>
@@ -29,7 +30,7 @@
 			<s:iterator value="%{#request.articles}" var="article">
 				<tr>
 					<td width="3%"><input type="checkbox" name="article" id=<s:property value="articleId"/>></td>
-					<td width="40%"><s:property value="theme"/></td>
+					<td width="40%"><a href="../detail?articleId=<s:property value="articleId"/>" target="_blank"><s:property value="theme"/></a></td>
 					<td><s:property value="author"/></td>
 					<td><s:property value="%{#request.kindMap[articleKindId]}"/></td>
 					<td><s:property value="articleTag"/></td>

@@ -51,6 +51,9 @@
 			<c:if test="${param.page=='passSetup' }">
 				<%@include file="admin-passSetup.jsp" %>
 			</c:if>
+			<c:if test="${ empty param.page}">
+				<%@include file="admin-main.jsp" %>
+			</c:if>
 			
 <%-- 				<%@include file="admin-main.jsp" %> --%>
 <%-- 				<%@include file="admin-articleList.jsp" %> --%>
@@ -86,6 +89,7 @@
 			$("#content[value]").val($('#summernote').summernote('code'))
 	        $("form").submit();
 		}
+		
 		
 	</script>
 </c:if>
