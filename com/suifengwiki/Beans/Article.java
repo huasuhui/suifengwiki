@@ -14,7 +14,7 @@ public class Article {
 	
 	private String articleKindId;
 	
-	private List<String> articleTag;
+	private String articleTag;
 	
 	private String pageview;
 	
@@ -90,13 +90,13 @@ public class Article {
 
 
 
-	public List<String> getArticleTag() {
+	public String getArticleTag() {
 		return articleTag;
 	}
 
 
 
-	public void setArticleTag(List<String> articleTag) {
+	public void setArticleTag(String articleTag) {
 		this.articleTag = articleTag;
 	}
 

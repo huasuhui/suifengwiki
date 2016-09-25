@@ -9,7 +9,6 @@
     
  		<action name="Test" class="com.suifengwiki.Test">
  			<result name="success" type="redirect">
- 			
  				<param name="location">/admin/admin.jsp</param>
  				<param name="page">articleEdit</param>
  			</result>
@@ -35,17 +34,15 @@
  		
  		<!-- 所有文章 -->
  		<action name="article_list" class="com.suifengwiki.Action.ArticleAction" method="list">
- 			<result name="list" type="redirect">
-				<param name="location">/admin/admin.jsp</param>
- 				<param name="page">articleList</param>
-			</result>
+ 			<result name="list">/admin/admin.jsp?page=articleList</result>
  		</action>
+ 		
  		
  		<!-- 草稿 -->
  		<action name="article_draft" class="com.suifengwiki.Action.ArticleAction" method="draft">
- 			<result name="draft" type="redirect">
-				<param name="location">/admin/admin.jsp</param>
- 				<param name="page">articleDraftList</param>
+ 			<result name="draft" >/admin/admin.jsp?articleDraftList
+				<param name="location"></param>
+ 				<param name="page"></param>
 			</result>
  		</action>
  		
@@ -63,6 +60,15 @@
 				<param name="location">/admin/admin.jsp</param>
  				<param name="page">passSetup</param>
 			</result>
+ 		</action>
+ 		
+ 		<!-- 首页文章 -->
+ 		<action name="index" class="com.suifengwiki.Action.ArticleAction" method="index">
+ 			<result name="index">/index.jsp</result>
+ 		</action>
+ 		
+ 		<action name="detail" class="com.suifengwiki.Action.ArticleAction" method="detail">
+ 			<result name="detail">/detail.jsp</result>
  		</action>
  		
     </package>

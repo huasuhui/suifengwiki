@@ -48,6 +48,10 @@
 			<c:if test="${param.page=='commonSetup' }">
 				<%@include file="admin-setup.jsp" %>
 			</c:if>
+			<c:if test="${param.page=='passSetup' }">
+				<%@include file="admin-passSetup.jsp" %>
+			</c:if>
+			
 <%-- 				<%@include file="admin-main.jsp" %> --%>
 <%-- 				<%@include file="admin-articleList.jsp" %> --%>
 <%-- 				<%@include file="admin-articleEdit.jsp" %> --%>

@@ -17,7 +17,7 @@ public class ArticleDao {
 	private String content;
 	private String author;
 	private String articleKindId;
-	private List<String> articleTag;
+	private String articleTag;
 	
 	private Connection conn;
 	private String sql;
@@ -51,7 +51,7 @@ public class ArticleDao {
 	
 	public List<Article> articleQuery(String articleId){
 		List<Article> articles = new ArrayList<Article>();
-		sql = "select articleId,theme,content,author,articleKindId,modifydate from article where 1=1";
+		sql = "select articleId,theme,content,author,articleKindId, articleTag,modifydate from article where 1=1";
 		
 		if(!"all".equals(articleId)){
 			sql += " and articleid = '"+ articleId +"'";
@@ -69,6 +69,7 @@ public class ArticleDao {
 					article.setContent(result.getString("content"));
 					article.setAuthor(result.getString("author"));
 					article.setArticleKindId(result.getString("articleKindId"));
+					article.setArticleTag(result.getString("articleTag"));
 					article.setModifydate(result.getString("modifydate"));
 					articles.add(article);
 				}

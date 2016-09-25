@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<s:debug></s:debug>
+
 	<div id="container">
 	
 		<!-- header -->
@@ -19,45 +19,79 @@
 		
 		<!-- category_item -->
 		<div id="category_item">
-			<div class="category">
-				<div class="category_name">
-					Java
+		<!-- 
+			<li>迭代循环取值,最简单  
+		     <s:iterator value="strMap" id="entry">  
+		       <s:property value="#entry"/>{  
+		        key: <s:property value="key"/>   
+		      value:<s:property value="value"/>}|  
+		       </s:iterator>  
+		      </li>
+		 -->
+
+			<s:iterator value="%{#request.kindArticleMaps}" var="kindArticleMap">
+				<s:iterator value="kindArticleMap" id="entry"> 
+				<div class="category">
+					<div class="category_name">
+						<s:property value="key"/>
+					</div>
+					
+					<div class="category_list">
+						<ul>
+							<s:iterator value="value" var="article">
+								<li class="category_list_li">
+									<a href="detail?articleId=<s:property value="articleId"/>">
+										<s:property value="theme"/>
+									</a>
+								</li>
+							</s:iterator>
+						</ul>
+					</div>	
 				</div>
-				<div class="category_list">
-					<ul>
-						<li class="category_list_li">
-							<a href="/">regex</a>
-						</li>
-						<li class="category_list_li">
-							<a href="/">regex</a>
-						</li>
-						<li class="category_list_li">
-							<a href="/">regex</a>
-						</li>
-					</ul>
-				</div>
+				</s:iterator>
+			</s:iterator>
 			
-			</div>
+<!-- 			<div class="category"> -->
+				
+<!-- 				<div class="category_name"> -->
+<!-- 					Java -->
+<!-- 				</div> -->
+				
+<!-- 				<div class="category_list"> -->
+<!-- 					<ul> -->
+<!-- 						<li class="category_list_li"> -->
+<!-- 							<a href="/">regex</a> -->
+<!-- 						</li> -->
+<!-- 						<li class="category_list_li"> -->
+<!-- 							<a href="/">regex</a> -->
+<!-- 						</li> -->
+<!-- 						<li class="category_list_li"> -->
+<!-- 							<a href="/">regex</a> -->
+<!-- 						</li> -->
+<!-- 					</ul> -->
+<!-- 				</div> -->
 			
-			<div class="category">
-				<div class="category_name">
-					Linux
-				</div>
-				<div class="category_list">
-					<ul>
-						<li class="category_list_li">
-							<a href="/">shell</a>
-						</li>
-						<li class="category_list_li">
-							<a href="/">shell</a>
-						</li>
-						<li class="category_list_li">
-							<a href="/">shell</a>
-						</li>
-					</ul>
-				</div>
+<!-- 			</div> -->
 			
-			</div>
+<!-- 			<div class="category"> -->
+<!-- 				<div class="category_name"> -->
+<!-- 					Linux -->
+<!-- 				</div> -->
+<!-- 				<div class="category_list"> -->
+<!-- 					<ul> -->
+<!-- 						<li class="category_list_li"> -->
+<!-- 							<a href="/">shell</a> -->
+<!-- 						</li> -->
+<!-- 						<li class="category_list_li"> -->
+<!-- 							<a href="/">shell</a> -->
+<!-- 						</li> -->
+<!-- 						<li class="category_list_li"> -->
+<!-- 							<a href="/">shell</a> -->
+<!-- 						</li> -->
+<!-- 					</ul> -->
+<!-- 				</div> -->
+			
+<!-- 			</div> -->
 		</div>
 	
 		<!-- footer -->

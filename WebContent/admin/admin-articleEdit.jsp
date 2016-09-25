@@ -41,17 +41,17 @@
 						    	<div id="kind">
 						    		<div class="radio">
 									    <label>
-									      <input type="radio" name ='kind'> Linux
+									      <input type="radio" name ='articleKindId' value='1'> Linux
 									    </label>
 									</div>
 						    		<div class="radio">
 									    <label>
-									      <input type="radio" name ='kind'> Java
+									      <input type="radio" name ='articleKindId' value='2'> Java
 									    </label>
 									</div>
 						    		<div class="radio">
 									    <label>
-									      <input type="radio" name ='kind'> Python
+									      <input type="radio" name ='articleKindId' value='3'> Python
 									    </label>
 									</div>
 						    	</div>
@@ -62,21 +62,8 @@
 					  <div class="panel-heading">标签</div>
 						  <div class="panel-body">
 						    <div id="tag">
-						    		<div class="checkbox">
-									    <label>
-									      <input type="checkbox" name="tag"> Linux
-									    </label>
-									</div>
-						    		<div class="checkbox">
-									    <label>
-									      <input type="checkbox" name="tag"> Java
-									    </label>
-									</div>
-						    		<div class="checkbox">
-									    <label>
-									      <input type="checkbox" name="tag"> Python
-									    </label>
-									</div>
+						    		<input type="text" name="tag">
+						    		<button>添加</button>
 						    	</div>
 						  </div>
 					</div>
