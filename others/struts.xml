@@ -71,6 +71,7 @@
  			<result name="detail">/detail.jsp</result>
  		</action>
  		
+ 		<action name="imageUpload" class="com.suifengwiki.Action.ActionImageUpload" method="imageUpload"></action>
+ 		
     </package>
-
 </struts>

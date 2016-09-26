@@ -83,12 +83,35 @@
 		  maxHeight: null,             // set maximum height of editor
 		  focus: true,               // set focus to editable area after initializing summernote
 		  lang: 'zh-CN',// default: 'en-US'
-		  callbacks: {  
-                onImageUpload: function(files) {  
-                    sendFile(files);  
+// 		  callbacks: {  
+//                 onImageUpload: function(files) {  
+//                     sendFile(files);  
   
-                }  
-           }
+//                 }  
+//            }
+		  callbacks: {
+			    onImageUpload: function(files) {
+			      //上传图片到服务器，使用了formData对象，至于兼容性...据说对低版本IE不太友好
+			      var formData = new FormData();
+			      formData.append('file',files[0]);
+			      $.ajax({
+			        url : 'imageUpload',//后台文件上传接口
+			        type : 'POST',
+			        data : formData,
+			        processData : false,
+			        contentType : false,
+			        success: function(data) {  
+			        	  alert(data);
+			              $("#summernote").summernote('insertImage', data, 'image name'); // the insertImage API  
+			        }, 
+			      error: function(data) {  
+			    	  alert(1);
+		        	  alert(data);
+		              $("#summernote").summernote('insertImage', data, 'image name'); // the insertImage API  
+		        }
+			      });
+			    }
+			  }
 		});
 		
 		function save(){
@@ -96,23 +119,23 @@
 	        $("form").submit();
 		}
 		
-		function sendFile(files) {  
-		     oMyForm = new FormData();  
-		     oMyForm.append("file", files[0]);  
-		     oMyForm.append("type","1");  
-		     oMyForm.append("from","2");  
-		     $.ajax({    
-		         data: oMyForm,    
-		         type: "POST",    
-		         url: "${pageContext.request.contextPath}/fileManager/doUpload",   
-		         contentType: false,    
-		         cache: false,    
-		         processData: false,    
-		         success: function(data) {    
-		             $(".summernote").summernote('insertImage', url, filename);  
-		         }  
-		         });   
-		} 
+// 		function sendFile(files) {  
+// 		     oMyForm = new FormData();  
+// 		     oMyForm.append("file", files[0]);  
+// 		     oMyForm.append("type","1");  
+// 		     oMyForm.append("from","2");  
+// 		     $.ajax({    
+// 		         data: oMyForm,    
+// 		         type: "POST",    
+// 		         url: "${pageContext.request.contextPath}/fileManager/doUpload",   
+// 		         contentType: false,    
+// 		         cache: false,    
+// 		         processData: false,    
+// 		         success: function(data) {    
+// 		             $(".summernote").summernote('insertImage', url, filename);  
+// 		         }  
+// 		         });   
+// 		} 
 		
 		
 	</script>
