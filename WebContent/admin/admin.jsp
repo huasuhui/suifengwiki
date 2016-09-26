@@ -82,13 +82,37 @@
 		  minHeight: null,             // set minimum height of editor
 		  maxHeight: null,             // set maximum height of editor
 		  focus: true,               // set focus to editable area after initializing summernote
-		  lang: 'zh-CN'// default: 'en-US'
+		  lang: 'zh-CN',// default: 'en-US'
+		  callbacks: {  
+                onImageUpload: function(files) {  
+                    sendFile(files);  
+  
+                }  
+           }
 		});
 		
 		function save(){
 			$("#content[value]").val($('#summernote').summernote('code'))
 	        $("form").submit();
 		}
+		
+		function sendFile(files) {  
+		     oMyForm = new FormData();  
+		     oMyForm.append("file", files[0]);  
+		     oMyForm.append("type","1");  
+		     oMyForm.append("from","2");  
+		     $.ajax({    
+		         data: oMyForm,    
+		         type: "POST",    
+		         url: "${pageContext.request.contextPath}/fileManager/doUpload",   
+		         contentType: false,    
+		         cache: false,    
+		         processData: false,    
+		         success: function(data) {    
+		             $(".summernote").summernote('insertImage', url, filename);  
+		         }  
+		         });   
+		} 
 		
 		
 	</script>
