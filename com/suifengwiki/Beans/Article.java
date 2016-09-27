@@ -16,8 +16,6 @@ public class Article {
 	
 	private String articleTag;
 	
-	private String pageview;
-	
 	private String state;
 	
 	private String makedate;
@@ -102,18 +100,6 @@ public class Article {
 
 
 
-	public String getPageview() {
-		return pageview;
-	}
-
-
-
-	public void setPageview(String pageview) {
-		this.pageview = pageview;
-	}
-
-
-
 	public String getState() {
 		return state;
 	}
@@ -177,7 +163,7 @@ public class Article {
 	@Override
 	public String toString() {
 		return "Article [articleId=" + articleId + ", theme=" + theme + ", content=" + content + ", author=" + author
-				+ ", articleKindId=" + articleKindId + ", articleTag=" + articleTag + ", pageview=" + pageview
+				+ ", articleKindId=" + articleKindId + ", articleTag=" + articleTag 
 				+ ", state=" + state + ", makedate=" + makedate + ", maketime=" + maketime + ", modifydate="
 				+ modifydate + ", modifytime=" + modifytime + "]";
 	}

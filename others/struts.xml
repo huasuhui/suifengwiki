@@ -16,10 +16,7 @@
  		
  		<!-- 编辑文章 -->
  		<action name="editArticle_edit" class="com.suifengwiki.Action.ArticleAction" method="edit">
- 			<result name="edit" type="redirect">
-				<param name="location">/admin/admin.jsp</param>
- 				<param name="page">articleEdit</param>
-			</result>
+ 			<result name="edit">/admin/admin.jsp?page=articleEdit</result>
  		</action>
  		
  		<!-- 保存文章 -->
@@ -40,10 +37,7 @@
  		
  		<!-- 草稿 -->
  		<action name="article_draft" class="com.suifengwiki.Action.ArticleAction" method="draft">
- 			<result name="draft" >/admin/admin.jsp?articleDraftList
-				<param name="location"></param>
- 				<param name="page"></param>
-			</result>
+ 			<result name="draft" >/admin/admin.jsp?page=articleList</result>
  		</action>
  		
  		<!-- 常规设置 -->

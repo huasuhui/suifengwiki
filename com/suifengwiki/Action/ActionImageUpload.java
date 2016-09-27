@@ -47,7 +47,7 @@ public class ActionImageUpload {
 		System.out.println(this);
 		
 		ServletContext servletContext = ServletActionContext.getServletContext();
-		String basePath = "/Files/" + fileFileName;
+		String basePath = "Files/" + fileFileName;
 		String dir = servletContext.getRealPath(basePath);
 		System.out.println(servletContext.getContextPath());
 		System.out.println(dir);
@@ -77,7 +77,7 @@ public class ActionImageUpload {
 	    PrintWriter out = response.getWriter();  
 	    //JSON在传递过程中是普通字符串形式传递的，这里简单拼接一个做测试  
 //	    String jsonString="{\"dir\":\"123\"}";  
-	    out.println(".." + basePath);  
+	    out.println(servletContext.getInitParameter("contextPath") + basePath);  
 	    out.flush();  
 	    out.close();  
 		

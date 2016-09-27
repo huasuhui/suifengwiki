@@ -9,6 +9,7 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.suifengwiki.Beans.Article;
 import com.suifengwiki.Util.Conn;
+import com.suifengwiki.Util.Pubfun;
 
 public class ArticleDao {
 	
@@ -18,6 +19,7 @@ public class ArticleDao {
 	private String author;
 	private String articleKindId;
 	private String articleTag;
+	private String state;
 	
 	private Connection conn;
 	private String sql;
@@ -30,8 +32,11 @@ public class ArticleDao {
 		author = article.getAuthor();
 		articleKindId = article.getArticleKindId();
 		articleTag = article.getArticleTag();
-		
-		sql = "insert into article(theme,content,author) values('"+ theme +"','"+ content +"','"+ author +"')";
+		state = article.getState();
+		String currentdate = Pubfun.getCurrentDate();
+		String currenttime = Pubfun.getCurrentTime();
+		sql = "insert into article(theme,content,author,articleKindId,articleTag,state,makedate,maketime,modifydate,modifytime) "
+				+ "values('"+ theme +"','"+ content +"','"+ author +"','"+ articleKindId +"','"+ articleTag +"','"+state+"','"+ currentdate +"','"+ currenttime +"','"+ currentdate +"','"+ currenttime +"')";
 		System.out.println(sql);
 		try {
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
@@ -53,7 +58,11 @@ public class ArticleDao {
 		List<Article> articles = new ArrayList<Article>();
 		sql = "select articleId,theme,content,author,articleKindId, articleTag,modifydate from article where 1=1";
 		
-		if(!"all".equals(articleId)){
+		if("publish".equals(articleId)){
+			sql += " and state = '0'";
+		}else if("draft".equals(articleId)){
+			sql += " and state = '1'";
+		}else{
 			sql += " and articleid = '"+ articleId +"'";
 		}
 		System.out.println(sql);

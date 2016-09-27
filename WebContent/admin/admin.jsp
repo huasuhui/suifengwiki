@@ -67,9 +67,6 @@
 		<div id="admin-footer"></div>
 	</div>
 
-
-
-
 <script src="../js/sidebar-menu.js"></script>
 <script>
 		$.sidebarMenu($('.sidebar-menu'));
@@ -78,17 +75,11 @@
 <c:if test="${param.page=='articleEdit' }">
 	<script>
 		$('#summernote').summernote({
-		  height: 435,                 // set editor height
+		  height: 500,                 // set editor height
 		  minHeight: null,             // set minimum height of editor
 		  maxHeight: null,             // set maximum height of editor
 		  focus: true,               // set focus to editable area after initializing summernote
 		  lang: 'zh-CN',// default: 'en-US'
-// 		  callbacks: {  
-//                 onImageUpload: function(files) {  
-//                     sendFile(files);  
-  
-//                 }  
-//            }
 		  callbacks: {
 			    onImageUpload: function(files) {
 			      //上传图片到服务器，使用了formData对象，至于兼容性...据说对低版本IE不太友好
@@ -115,27 +106,17 @@
 		});
 		
 		function save(){
-			$("#content[value]").val($('#summernote').summernote('code'))
+			$("#content[value]").val($('#summernote').summernote('code'));
+			$("#state[value]").val($("select").val());
 	        $("form").submit();
 		}
 		
-// 		function sendFile(files) {  
-// 		     oMyForm = new FormData();  
-// 		     oMyForm.append("file", files[0]);  
-// 		     oMyForm.append("type","1");  
-// 		     oMyForm.append("from","2");  
-// 		     $.ajax({    
-// 		         data: oMyForm,    
-// 		         type: "POST",    
-// 		         url: "${pageContext.request.contextPath}/fileManager/doUpload",   
-// 		         contentType: false,    
-// 		         cache: false,    
-// 		         processData: false,    
-// 		         success: function(data) {    
-// 		             $(".summernote").summernote('insertImage', url, filename);  
-// 		         }  
-// 		         });   
-// 		} 
+		function addArticleTag(){
+			$("#articleTagStrong").html("本文标签：<a>"+$("#articleTagInput").val()+"</a>");
+			$("#articleTag[value]").val($("#articleTagInput").val());
+			$("#articleTagButton").html("修改");
+			return false;
+		}
 		
 		
 	</script>

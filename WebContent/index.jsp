@@ -51,47 +51,6 @@
 				</s:iterator>
 			</s:iterator>
 			
-<!-- 			<div class="category"> -->
-				
-<!-- 				<div class="category_name"> -->
-<!-- 					Java -->
-<!-- 				</div> -->
-				
-<!-- 				<div class="category_list"> -->
-<!-- 					<ul> -->
-<!-- 						<li class="category_list_li"> -->
-<!-- 							<a href="/">regex</a> -->
-<!-- 						</li> -->
-<!-- 						<li class="category_list_li"> -->
-<!-- 							<a href="/">regex</a> -->
-<!-- 						</li> -->
-<!-- 						<li class="category_list_li"> -->
-<!-- 							<a href="/">regex</a> -->
-<!-- 						</li> -->
-<!-- 					</ul> -->
-<!-- 				</div> -->
-			
-<!-- 			</div> -->
-			
-<!-- 			<div class="category"> -->
-<!-- 				<div class="category_name"> -->
-<!-- 					Linux -->
-<!-- 				</div> -->
-<!-- 				<div class="category_list"> -->
-<!-- 					<ul> -->
-<!-- 						<li class="category_list_li"> -->
-<!-- 							<a href="/">shell</a> -->
-<!-- 						</li> -->
-<!-- 						<li class="category_list_li"> -->
-<!-- 							<a href="/">shell</a> -->
-<!-- 						</li> -->
-<!-- 						<li class="category_list_li"> -->
-<!-- 							<a href="/">shell</a> -->
-<!-- 						</li> -->
-<!-- 					</ul> -->
-<!-- 				</div> -->
-			
-<!-- 			</div> -->
 		</div>
 	
 		<!-- footer -->

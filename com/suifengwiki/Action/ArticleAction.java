@@ -1,6 +1,7 @@
 package com.suifengwiki.Action;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -48,6 +49,17 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 		if(articleResult != null && articleResult.size()>0){
 			requestMap.put("articleResult", articleResult.get(0));
 		}
+		
+		SSRS ssrs = new SSRS();
+		List<List<String>> kindList = ssrs.ExecSQL("select articleKindId,articleKindName from articlekind order by articleKindId");
+		requestMap.put("kindList", kindList);
+		System.out.println(Arrays.asList(kindList));
+		
+		KindDao kindDao = new KindDao();
+		Map<String,String> kindMap =  kindDao.getKindMap();
+		requestMap.put("kindMap", kindMap);
+		
+		
 		return "edit";
 	}
 	
@@ -55,7 +67,7 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 	
 	public String list(){
 		articleDao = new ArticleDao(article);
-		List<Article> articles = articleDao.articleQuery("all");
+		List<Article> articles = articleDao.articleQuery("publish");
 		requestMap.put("articles", articles);
 		
 		KindDao kindDao = new KindDao();
@@ -66,6 +78,13 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 	}
 	
 	public String draft(){
+		articleDao = new ArticleDao(article);
+		List<Article> articles = articleDao.articleQuery("draft");
+		requestMap.put("articles", articles);
+		
+		KindDao kindDao = new KindDao();
+		Map<String,String> kindMap =  kindDao.getKindMap();
+		requestMap.put("kindMap", kindMap);
 		return "draft";
 	}
 	

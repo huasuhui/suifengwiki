@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="s" uri="/struts-tags" %>   
+
 <div id="admin-articleEdit">			
 	<form role="form" action="editArticle_save" method="post">
 		
@@ -22,7 +24,12 @@
 					  		<br>
 					  		
 					  		<div>
-					  			状态：草稿 <a>编辑</a>
+					  			
+					  			<strong>状态：</strong>
+					  			<select>
+					  				<option name="state" value="0">发布</option>
+					  				<option name="state" value="1">草稿</option>
+					  			</select>
 					  		</div>
 					  		
 					  		<br>
@@ -40,21 +47,16 @@
 					  <div class="panel-heading">分类目录</div>
 						  <div class="panel-body">
 						    	<div id="kind">
-						    		<div class="radio">
-									    <label>
-									      <input type="radio" name ='articleKindId' value='1'> Linux
-									    </label>
-									</div>
-						    		<div class="radio">
-									    <label>
-									      <input type="radio" name ='articleKindId' value='2'> Java
-									    </label>
-									</div>
-						    		<div class="radio">
-									    <label>
-									      <input type="radio" name ='articleKindId' value='3'> Python
-									    </label>
-									</div>
+						    	
+						    		<s:iterator value="%{#request.kindList}" var="kind">
+						    			<div class="radio">
+										    <label>
+										      <input type="radio" name ='articleKindId' value='${kind[0] }'> 
+											  ${kind[1] }
+										    </label>
+										</div>
+						    		</s:iterator>
+
 						    	</div>
 						  </div>
 					</div>
@@ -62,11 +64,12 @@
 					<div class="panel panel-default">
 					  <div class="panel-heading">标签</div>
 						  <div class="panel-body">
-						    <div id="tag">
-						    		<input type="text" name="tag">
-						    		<button>添加</button>
+						    <div>
+						    		<input type="text" id="articleTagInput">
+						    		<button id="articleTagButton" onclick="addArticleTag();return false;">添加</button>
 						    		<br><br>
-						    		<strong>本文标签：</strong>
+						    		<strong id="articleTagStrong">本文标签：</strong>
+						    		
 						    	</div>
 						  </div>
 					</div>
@@ -78,15 +81,12 @@
 					    <input type="text" class="form-control" name="theme" placeholder="在此输入标题" aria-describedby="basic-addon1">
 					</div>
 					
-					<div id="summernote">
-						<c:if test="${ not empty requestScope.article }">
-							${requestScope.article.content }
-						</c:if>
-					</div>					
+					<div id="summernote">hello!</div>					
 				</div>
 				
-				<input type="hidden" id="content" name="content" value="huasuhui2">
-				<input type="hidden" id="content" name="username" value="huasuhui">
+				<input type="hidden" id="content" name="content" value="">
+				<input type="hidden" id="articleTag" name="articleTag" value="">
+				<input type="hidden" id="state" name="state" value="">
 			</div>
 						
 	</form>			
