@@ -5,12 +5,23 @@
 <html>
 <head>
 <link rel="Stylesheet" type="text/css" href="css/suifengwiki.css">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
 	<div id="container">
+	
+		<form action="listSearch" id="listSearchForm" method="post">
+				<div class="input-group" id="listSearch">
+<!-- 					<input type="hidden" id="theme" name="theme" value=""> -->
+					<input type="text" class="form-control" id="theme" name="theme">
+					<span  class="input-group-addon" onclick="listSearch();" style="cursor:pointer">Search</span>
+				</div>
+		</form>
 	
 		<!-- header -->
 		<div id="header">
@@ -58,5 +69,10 @@
 			powered by suifeng
 		</div>
 	</div>
+<script type="text/javascript">
+	function listSearch(){
+		$("#listSearchForm").submit();
+	}
+</script>	
 </body>
 </html>

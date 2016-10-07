@@ -12,8 +12,7 @@
 						<ul class="treeview-menu">
 		  					<li><a href="article_list"><i class="fa fa-circle-o"></i> 已发布文章</a></li>
 			  				<li><a href="editArticle_edit"><i class="fa fa-circle-o"></i> 写文章</a></li>
-			  				<li><a href="#"><i class="fa fa-circle-o"></i> 分类目录</a></li>
-			  				<li><a href="#"><i class="fa fa-circle-o"></i> 标签</a></li>
+			  				<li><a href="kind_list"><i class="fa fa-circle-o"></i> 分类目录</a></li>
 						</ul>
 	  				</li>
 
@@ -21,13 +20,6 @@
 						<a href="article_draft">
 		  					<i class="fa fa-calendar"></i> <span>草稿箱</span>
 		  					<small class="label pull-right label-warning">3</small>
-						</a>
-	  				</li>
-	  				
-	  				<li>
-						<a href="#">
-		  					<i class="fa fa-envelope"></i> <span>垃圾箱</span>
-		  					<small class="label pull-right label-danger">13</small>
 						</a>
 	  				</li>
 

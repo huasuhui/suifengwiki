@@ -7,22 +7,13 @@ public class Pubfun {
 	
 
 	public static String getCurrentDate() {
-		String pattern = "yyyy-MM-dd";
-		SimpleDateFormat df = new SimpleDateFormat(pattern);
-		Date today = new Date();
-		String tString = df.format(today);
-		return tString;
+		return new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 	}
-
 
 	public static String getCurrentTime() {
-		String pattern = "HH:mm:ss";
-		SimpleDateFormat df = new SimpleDateFormat(pattern);
-		Date today = new Date();
-		String tString = df.format(today);
-		return tString;
+		return new SimpleDateFormat("HH:mm:ss").format(new Date());
 	}
-
+	
 	public Pubfun() {
 		
 	}

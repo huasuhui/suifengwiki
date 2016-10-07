@@ -1,7 +1,5 @@
 package com.suifengwiki.Beans;
 
-import java.util.List;
-
 public class Article {
 	
 	private int articleId;

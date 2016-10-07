@@ -4,15 +4,16 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+	
     <package name="hello" extends="struts-default" namespace="/">
-    
- 		<action name="Test" class="com.suifengwiki.Test">
- 			<result name="success" type="redirect">
- 				<param name="location">/admin/admin.jsp</param>
- 				<param name="page">articleEdit</param>
- 			</result>
- 		</action>
+    	
+<!--  		<action name="Test" class="com.suifengwiki.Test"> -->
+<!--  			<result name="success" type="redirect"> -->
+<!--  				<param name="location">/admin/admin.jsp</param> -->
+<!--  				<param name="page">articleEdit</param> -->
+<!--  			</result> -->
+<!--  		</action> -->
  		
  		<!-- 编辑文章 -->
  		<action name="editArticle_edit" class="com.suifengwiki.Action.ArticleAction" method="edit">
@@ -21,7 +22,7 @@
  		
  		<!-- 保存文章 -->
  		<action name="editArticle_save" class="com.suifengwiki.Action.ArticleAction" method="save">
- 			<result name="save" type="redirect">/index.jsp</result>
+ 			<result name="save">/admin/admin.jsp?page=articleList</result>
  		</action>
  		
  		<!-- 查询文章 -->
@@ -35,9 +36,54 @@
  		</action>
  		
  		
+ 		<!-- admin搜索指定文章 -->
+ 		<action name="admin_listSearch" class="com.suifengwiki.Action.ArticleAction" method="adminListSearch">
+ 			<result name="adminListSearch">/admin/admin.jsp?page=articleList</result>
+ 		</action>
+ 		
+	  		<!-- 前台搜索指定文章 -->
+ 		<action name="listSearch" class="com.suifengwiki.Action.ArticleAction" method="listSearch">
+ 			<result name="listSearch">/index.jsp</result>
+ 		</action>
+ 		
+ 		<!-- 删除文章 -->
+ 		<action name="article_delete" class="com.suifengwiki.Action.ArticleAction" method="delete">
+ 			<result name="delete">/admin/admin.jsp?page=articleList</result>
+ 		</action>
+ 		
+ 		<!-- 修改文章状态 -->
+ 		<action name="article_update" class="com.suifengwiki.Action.ArticleAction" method="stateUpdate">
+ 			<result name="stateUpdate">/admin/admin.jsp?page=articleList</result>
+ 		</action>
+ 		
+ 		<!-- 所有分类 -->
+ 		<action name="kind_list" class="com.suifengwiki.Action.KindAction" method="kindList">
+ 			<result name="kindList">/admin/admin.jsp?page=kindList</result>
+ 		</action>
+ 		
+ 		<!-- 添加分类 -->
+ 		<action name="kind_add" class="com.suifengwiki.Action.KindAction" method="addKind">
+ 			<result name="addKind">/admin/admin.jsp?page=kindList</result>
+ 		</action>
+ 		
+ 		<!-- 修改分类 -->
+ 		<action name="kind_update" class="com.suifengwiki.Action.KindAction" method="updateKind">
+ 			<result name="updateKind">/admin/admin.jsp?page=kindList</result>
+ 		</action>
+ 		
+ 		<!-- 删除分类 -->
+ 		<action name="kind_delete" class="com.suifengwiki.Action.KindAction" method="deleteKind">
+ 			<result name="deleteKind">/admin/admin.jsp?page=kindList</result>
+ 		</action>
+ 		
  		<!-- 草稿 -->
  		<action name="article_draft" class="com.suifengwiki.Action.ArticleAction" method="draft">
  			<result name="draft" >/admin/admin.jsp?page=articleList</result>
+ 		</action>
+ 		
+ 		<!-- 保存草稿 -->
+ 		<action name="article_draft_save" class="com.suifengwiki.Action.ArticleAction" method="draftSave">
+ 			<result name="draftSave" >/admin/admin.jsp?page=articleList</result>
  		</action>
  		
  		<!-- 常规设置 -->
@@ -65,7 +111,14 @@
  			<result name="detail">/detail.jsp</result>
  		</action>
  		
+ 		<!-- 预览 -->
+ 		<action name="predetail" class="com.suifengwiki.Action.ArticleAction" method="predetail">
+ 			<result name="predetail">/detail.jsp</result>
+ 		</action>
+ 		
  		<action name="imageUpload" class="com.suifengwiki.Action.ActionImageUpload" method="imageUpload"></action>
+ 		
+ 		
  		
     </package>
 </struts>

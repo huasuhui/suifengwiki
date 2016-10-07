@@ -4,43 +4,29 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
-import sun.applet.Main;
-
 /**
  * 此工具类用作存储从数据库取出的数据
- * */
+ */
 public class SSRS {
-	
-	private int row = 0;
-	private int col = 0;
-	
-	private List<String> rows = new ArrayList<String>();
-	private List<String> cols = new ArrayList<String>();
-	
-	private void addData(){
-		
-	}
-	
-	public List<List<String>> ExecSQL(String sql){
+
+	public List<List<String>> ExecSQL(String sql) {
 		List<List<String>> lists = new ArrayList<List<String>>();
-		
+
 		Connection conn = Conn.getConn();
 		System.out.println(sql);
 		try {
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
 			ResultSet result = ps.executeQuery();
-			if(result != null){
-				while(result.next()){
+			if (result != null) {
+				while (result.next()) {
 					List<String> list = new ArrayList<String>();
-					for(int i=1;i<=result.getMetaData().getColumnCount();i++){
-						list.add(result.getObject(i)+"");
+					for (int i = 1; i <= result.getMetaData().getColumnCount(); i++) {
+						list.add(result.getObject(i) + "");
 					}
 					lists.add(list);
 				}
@@ -51,9 +37,16 @@ public class SSRS {
 		return lists;
 	}
 	
-
+	public String getOneValue(String sql){
+		List<List<String>> list = ExecSQL(sql);
+		if(list.size()>0 && list.get(0).size()>0){
+			return list.get(0).get(0);
+		}
+		return "";
+	}
+	
 	public SSRS() {
-		
+
 	}
 	
 	public static void main(String[] args) {

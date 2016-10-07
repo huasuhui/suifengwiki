@@ -51,6 +51,9 @@
 			<c:if test="${param.page=='passSetup' }">
 				<%@include file="admin-passSetup.jsp" %>
 			</c:if>
+			<c:if test="${param.page=='kindList' }">
+				<%@include file="admin-kindList.jsp" %>
+			</c:if>
 			<c:if test="${ empty param.page}">
 				<%@include file="admin-main.jsp" %>
 			</c:if>
@@ -91,13 +94,12 @@
 			        data : formData,
 			        processData : false,
 			        contentType : false,
-			        success: function(data) {  
-			        	  alert(data);
+			        success: function(data) {
+
 			              $("#summernote").summernote('insertImage', data, 'image name'); // the insertImage API  
 			        }, 
 			      error: function(data) {  
-			    	  alert(1);
-		        	  alert(data);
+
 		              $("#summernote").summernote('insertImage', data, 'image name'); // the insertImage API  
 		        }
 			      });
@@ -106,9 +108,35 @@
 		});
 		
 		function save(){
-			$("#content[value]").val($('#summernote').summernote('code'));
+			$("#content[value]").val($('#summernote').summernote('code').replace(/(^\s*)|(\s*$)/g, ""));
 			$("#state[value]").val($("select").val());
-	        $("form").submit();
+			if(check()){
+				$("form").submit();
+			}
+		}
+		
+		function check(){
+			if($("#theme[value]").val() == null || $("#theme[value]").val() == ""){
+				alert("文章标题不能为空！");
+				return false;
+			}
+			
+			if($("#content[value]").val() == null || $("#content[value]").val() == ""){
+				alert("文章内容不能为空！");
+				return false;
+			}
+			
+			if($('.articleKindId:checked').attr("value") == null || $('.articleKindId:checked').attr("value") == ""){
+				alert("文章分类不能为空！");
+				return false;
+			}
+			
+			if($("#articleTag[value]").val() == null || $("#articleTag[value]").val() == ""){
+				alert("文章标签不能为空！");
+				return false;
+			}
+			
+			return true;
 		}
 		
 		function addArticleTag(){
@@ -119,8 +147,149 @@
 		}
 		
 		
+		function loadArticle(){
+			
+		}
+			
 	</script>
 </c:if>
+
+<c:if test="${param.page=='kindList' }">
+	<script type="text/javascript">
+		$("tr").bind("click",function(){
+			var kindId = $(this).find("#KindId").html();
+			var kindName = $(this).find("#KindName").html();
+			$("#articleKindId[value]").val(kindId);
+			$("#articleKindName[value]").val(kindName);
+			$("#kindAddButton").attr('style','display:none');
+			$("#kindUpdateButton").attr('style','');
+		});
+		
+		function kindAdd(){
+			$("form").attr("action","kind_add");
+			$("form").submit();
+		}
+		
+		function kindUpdate(){
+			$("form").attr("action","kind_update");
+			$("form").submit();
+		}
+		
+		function kinddelete(){
+			$.ajax({
+		        url : 'kind_delete',
+		        type : 'POST',
+		        data : {articleKindId:$("#articleKindId[value]").val(), articleKindName:$("#articleKindName[value]").val()},
+		        success: function(data) { 
+		        	try{
+		        		var info = JSON.parse(data);
+			        	alert(info.msg);
+		        	}catch(err){
+		        		window.location.href = 'kind_list';
+		        	}
+		        	
+		        }, 
+		      	error: function(data) {  
+	        		alert(data);
+	        }
+		      });
+		}
+		
+	</script>
+</c:if>
+
+<script type="text/javascript">
+	function adminList_to_Edit(){
+		$("form").attr("action","editArticle_edit");
+		var count=0;
+
+		$('input[name="article"]:checked').each(function(){
+			count=count+1;
+			$("#articleId[value]").val($(this).attr("id"));
+		});
+		
+		if(count != 1){
+			alert("目前只支持单选！");
+			return false;
+		}
+
+		$("form").submit();
+		
+	}
+	
+	function adminList_to_Delete(){
+		$("form").attr("action","article_delete");
+		var count=0;
+
+		$('input[name="article"]:checked').each(function(){
+			count=count+1;
+			$("#articleId[value]").val($(this).attr("id"));
+		});
+		
+		if(count != 1){
+			alert("目前只支持单选！");
+			return false;
+		}
+
+		$("form").submit();
+		
+	}
+	
+	function listSearch(){
+		$("#listSearchForm").submit();
+	}
+	
+	function article_draft_save(){
+		$("#content[value]").val($('#summernote').summernote('code').replace(/(^\s*)|(\s*$)/g, ""));
+		$("#state[value]").val($("select").val());
+		if(check()){
+			$.ajax({
+		        url : 'article_draft_save',
+		        type : 'POST',
+		        data : {articleId:$("#articleId[value]").val(),theme:$("#theme[value]").val(),content:$('#summernote').summernote('code').replace(/(^\s*)|(\s*$)/g, ""), articleKindId:$("#articleKindId[value]").val(),articleTag:$("#articleTag[value]").val(),state:1},
+		        success: function(data) { 
+		        	//将articleKindId置上（保存一次以后就有articleKindId了）
+		        	$("#articleId[value]").val(data);
+		        	alert(data);
+		        }
+		      });
+		}
+		
+	}
+	
+	function predetail(){
+		$("#content[value]").val($('#summernote').summernote('code').replace(/(^\s*)|(\s*$)/g, ""));
+		$("#state[value]").val($("select").val());
+		
+		if(check()){
+			var theme = $("#theme[value]").val();
+			var content = $('#summernote').summernote('code').replace(/(^\s*)|(\s*$)/g, "");
+			//1.get请求缺陷&符号会截断之后内容 2.长度限制
+// 			window.open("../predetail?theme="+theme+"&content="+content,"_blank");
+			openWindowWithPost("../predetail",theme,content);
+		}
+	}
+	
+	function openWindowWithPost(url,theme,content){
+		var newWindow = window.open(url,"_blank");
+		if (!newWindow)
+		return false;
+// 		alert(theme);
+// 		alert(content);
+		var html = "";
+		html += "<!DOCTYPE html><html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><form id='formid' method='post' action='" + url + "'>";
+		html += "<input type='hidden' id = 'theme' name='theme' value='" + theme + "'/>";
+		html += "<input type='hidden' name='content' value='" + content + "'/>";
+		html += "</form><script src=\"http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js\"><\/script> <script type='text/javascript'>$(\"#formid\").submit();";//
+		html += "<\/script></body></html>";
+		var str = "不能中文"
+		newWindow.document.write(html);
+		return newWindow;
+	} 
+	
+
+	
+</script>
 
 </body>
 </html>

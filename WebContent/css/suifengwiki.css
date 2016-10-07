@@ -7,19 +7,36 @@
 
 #header {
 	border-bottom: 0.1em solid #ccc;
+	padding-top: 0.3em;
 	padding-bottom: 0.5em;
 	margin-bottom: 0.5em;
 }
 
+#header #date {
+	float: right;
+	margin-right:0;
+}
+
 #header a {
+	
 	text-decoration: none;
 	font-weight: bold;
+	font-size:20px;
+	color: #555;
+}
+
+#header Strong {
+	
+	text-decoration: none;
+	font-weight: bold;
+	font-size:20px;
 	color: #555;
 }
 
 .category {
 	border-bottom: 0.1em solid #ccc;
 	min-height: 3em;
+	padding-top: 1em;
 }
 
 .category_name {
@@ -41,6 +58,7 @@
 
 #content {
 	border-bottom: 0.1em solid #ccc;
+	font-family: SimSun;
 }
 
 #footer {
@@ -69,7 +87,24 @@
 	color:#FFF;
 }
 
+#listSearch {
+	width: 25%;
+	float: right;
+	margin-right:0;
+}
 
+#toc {
+	position: fixed;right:20%;top:5%;
+/* 	float: right; */
+/* 	margin-right:0; */
+/* 	margin: 0 0.5em; */
+	padding: 0.5em 1em;
+/* 	padding-left: 0.5em; */
+/* 	padding-right: 0.5em; */
+	border: 0.1em dashed silver;
+	background-color: #fbfffd;
+	margin-top:10px
+}
 
 
 

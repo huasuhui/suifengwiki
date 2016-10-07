@@ -27,6 +27,12 @@ public class ArticleDao {
 	private String errorMessage = "";
 	
 	public Boolean articleSave(){
+		
+		//如果存在，先删除，再插入
+		if(article != null && !"".equals(article.getArticleId())){
+			articleDelete();
+		}
+		
 		theme = article.getTheme();
 		content = article.getContent();
 		author = article.getAuthor();
@@ -56,7 +62,7 @@ public class ArticleDao {
 	
 	public List<Article> articleQuery(String articleId){
 		List<Article> articles = new ArrayList<Article>();
-		sql = "select articleId,theme,content,author,articleKindId, articleTag,modifydate from article where 1=1";
+		sql = "select articleId,theme,content,author,articleKindId, articleTag,modifydate,modifytime,state from article where 1=1";
 		
 		if("publish".equals(articleId)){
 			sql += " and state = '0'";
@@ -80,6 +86,42 @@ public class ArticleDao {
 					article.setArticleKindId(result.getString("articleKindId"));
 					article.setArticleTag(result.getString("articleTag"));
 					article.setModifydate(result.getString("modifydate"));
+					article.setModifytime(result.getString("modifytime"));
+					article.setState(result.getString("state"));
+					articles.add(article);
+				}
+			}
+		} catch (SQLException e) {
+			flag = false;
+			errorMessage += "获取文章列表异常！";
+			e.printStackTrace();
+		}
+		
+		return articles;
+	}
+	
+	public List<Article> articleQuerySpec(String state){
+		List<Article> articles = new ArrayList<Article>();
+		sql = "select articleId,theme,content,author,articleKindId, articleTag,modifydate,state from article where state = '"+ state +"' and (theme like '%"+ article.getTheme() +"%' "
+				+ " or content like '%"+ article.getTheme() +"%' "
+				+ " or articleTag like '%"+ article.getTheme() +"%' )";
+		
+		System.out.println(sql);
+		
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			ResultSet result = ps.executeQuery();
+			if(result != null){
+				while(result.next()){
+					Article article = new Article();
+					article.setArticleId(result.getInt("articleId"));
+					article.setTheme(result.getString("theme"));
+					article.setContent(result.getString("content"));
+					article.setAuthor(result.getString("author"));
+					article.setArticleKindId(result.getString("articleKindId"));
+					article.setArticleTag(result.getString("articleTag"));
+					article.setModifydate(result.getString("modifydate"));
+					article.setState(result.getString("state"));
 					articles.add(article);
 				}
 			}
@@ -94,7 +136,7 @@ public class ArticleDao {
 	
 	public Boolean articleUpdate(Article article){
 		
-		sql = "update article set theme='"+ article.getTheme() +"',content='"+ article.getContent() +"',author='"+ article.getAuthor() +"',articleKindId='"+ article.getArticleKindId() +"' where articleId = '"+ article.getArticleId() +"'";
+		sql = "update article set theme='"+ article.getTheme() +"',content='"+ article.getContent() +"',author='"+ article.getAuthor() +"',articleKindId='"+ article.getArticleKindId() +"',state='"+ article.getState() +"' where articleId = '"+ article.getArticleId() +"'";
 		System.out.println(sql);
 		
 		try {
@@ -113,7 +155,7 @@ public class ArticleDao {
 		return flag;
 	}
 	
-	public Boolean articleDelete(String articleId){
+	public Boolean articleDelete(){
 		sql = "delete from article where articleId = '"+ article.getArticleId() +"'";
 		System.out.println(sql);
 		
@@ -123,6 +165,28 @@ public class ArticleDao {
 			if(result == -1){
 				flag = false;
 				errorMessage += "delete语句执行失败!";
+			}
+		} catch (SQLException e) {
+			flag = false;
+			errorMessage += e.getMessage();
+			e.printStackTrace();
+		}
+
+		return flag;
+	}
+	
+	//文章状态更新
+	public Boolean articleStateUpdate(){
+		String state = "0".equals(article.getState()) ? "1" : "0";
+		sql = "update article set state= '"+ state +"' where articleId = '"+ article.getArticleId() +"'";
+		System.out.println(sql);
+		
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			int result = ps.executeUpdate();
+			if(result == -1){
+				flag = false;
+				errorMessage += "update语句执行失败!";
 			}
 		} catch (SQLException e) {
 			flag = false;

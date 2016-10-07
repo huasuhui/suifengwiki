@@ -5,6 +5,9 @@
 <html>
 <head>
 <link rel="Stylesheet" type="text/css" href="css/suifengwiki.css">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -12,12 +15,20 @@
 	<div id="container">
 		<!-- header -->
 		<div id="header">
-			<a href="index">Wiki · Suifeng</a> · ${requestScope.articleResult.theme}
+			
+			<div id="date">
+				最后更新&nbsp;${requestScope.articleResult.modifydate} ${requestScope.articleResult.modifytime}
+			</div>
+		
+			<a href="index">Wiki · Suifeng</a> · <Strong>${requestScope.articleResult.theme}</Strong>
 		</div>
 	
 		<!-- content -->
 		<div id="content">
-			<div id="toc">
+			
+			<div id="toc"></div>
+			
+			<div>
 				${requestScope.articleResult.content}
 			</div>
 		</div>
@@ -27,6 +38,21 @@
 		</div>
 	
 	</div>
-
+<script type="text/javascript">
+	function toc(){
+		var str="";
+		var i=1;
+		$("h2").each(function(){
+			$(this).attr("id",i);
+			var id = $(this).attr("id");
+			i++;
+			var html = $(this).html();
+			str = str + "<li><a href=\"#"+ id +"\">"+ html +"</a></li>";
+		});
+		str = "<span class=\"toctitle\">Table of Contents</span><ul>" + str + "</ul>";
+		$("#toc").html(str);
+	}
+	toc();
+</script>
 </body>
 </html>
