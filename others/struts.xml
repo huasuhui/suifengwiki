@@ -88,10 +88,7 @@
  		
  		<!-- 常规设置 -->
  		<action name="article_commonSetup" class="com.suifengwiki.Action.SetupAction" method="commonSetup">
- 			<result name="commonSetup" type="redirect">
-				<param name="location">/admin/admin.jsp</param>
- 				<param name="page">commonSetup</param>
-			</result>
+ 			<result name="commonSetup">/admin/admin.jsp?page=commonSetup</result>
  		</action>
  		
  		<!-- 修改密码 -->
@@ -118,6 +115,11 @@
  		
  		<action name="imageUpload" class="com.suifengwiki.Action.ActionImageUpload" method="imageUpload"></action>
  		
+ 		<action name="getArticle_draft_count" class="com.suifengwiki.Action.ArticleAction" method="getArticle_draft_count"></action>
+ 		
+ 		<action name="websiteSetup" class="com.suifengwiki.Action.SetupAction" method="websiteSetup">
+ 			<result name="websiteSetup">/admin/admin.jsp?page=commonSetup</result>
+ 		</action>
  		
  		
     </package>

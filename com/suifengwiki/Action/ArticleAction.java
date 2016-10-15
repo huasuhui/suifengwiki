@@ -265,6 +265,18 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 		return "predetail";
 	}
 	
+	public void getArticle_draft_count() throws IOException{
+		
+		SSRS ssrs = new SSRS();
+		String articleId = ssrs.getOneValue("select count(1) from article where state = 1");
+		HttpServletResponse response=ServletActionContext.getResponse();  
+	    response.setContentType("text/html;charset=utf-8");  
+	    PrintWriter out = response.getWriter();  
+	    out.println(articleId);  
+	    out.flush();  
+	    out.close(); 
+	}
+	
 	private Article article = new Article();
 
 	public Article getModel(){ 
@@ -278,5 +290,5 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 		requestMap = arg0;
 	} 
 	
-
+	
 }

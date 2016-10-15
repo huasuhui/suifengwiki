@@ -19,7 +19,7 @@
 					<li>
 						<a href="article_draft">
 		  					<i class="fa fa-calendar"></i> <span>草稿箱</span>
-		  					<small class="label pull-right label-warning">3</small>
+		  					<small id="article_draft_count" class="label pull-right label-warning"></small>
 						</a>
 	  				</li>
 
@@ -29,7 +29,6 @@
 						</a>
 						<ul class="treeview-menu">
 		  					<li><a href="article_commonSetup"><i class="fa fa-circle-o"></i> 常规设置</a></li>
-			  				<li><a href="article_passSetup"><i class="fa fa-circle-o"></i> 修改密码</a></li>
 						</ul>
 	  				</li>
 				</ul>

@@ -250,7 +250,6 @@
 		        success: function(data) { 
 		        	//将articleKindId置上（保存一次以后就有articleKindId了）
 		        	$("#articleId[value]").val(data);
-		        	alert(data);
 		        }
 		      });
 		}
@@ -286,6 +285,48 @@
 		newWindow.document.write(html);
 		return newWindow;
 	} 
+	
+	function setupSubmit(){
+		
+		$.ajax({
+	        url : 'websiteSetup',
+	        type : 'POST',
+	        data : {webSiteTheme: $("#webSiteTheme").val(),webSiteEmail: $("#webSiteEmail").val(),
+	        		webSiteDateFormat: $("#webSiteDateFormat").val(),webSiteTimeFormat: $("#webSiteTimeFormat").val(),
+	        		webSiteFooterSetup: $("#webSiteFooterSetup").val()},
+       		success: function(data) {
+	        	try{
+	        		var info = JSON.parse(data);
+		        	alert(info.msg);
+	        	}catch(err){
+	        		window.location.href = 'article_commonSetup';
+	        	}
+	        	
+	        }, 
+	      	error: function(data) {  
+        		alert(data);
+	      	}
+	      });
+	}
+	
+	function setupReset(){
+		$("#webSiteTheme").val("");
+		$("#webSiteEmail").val("");
+		$("#webSiteDateFormat").val("");
+		$("#webSiteTimeFormat").val("");
+		$("#webSiteFooterSetup").val("");
+	}
+	
+	function getArticle_draft_count(){
+		$.ajax({
+	        url : 'getArticle_draft_count',
+	        type : 'POST',
+	        success: function(data) { 
+	        	$("#article_draft_count").html(data);
+	        }
+	      });
+	}
+	getArticle_draft_count();
 	
 
 	
