@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+	
+    <package name="hello" extends="struts-default" namespace="/">
+    	
+<!--  		<action name="Test" class="com.suifengwiki.Test"> -->
+<!--  			<result name="success" type="redirect"> -->
+<!--  				<param name="location">/admin/admin.jsp</param> -->
+<!--  				<param name="page">articleEdit</param> -->
+<!--  			</result> -->
+<!--  		</action> -->
+ 		
+ 		<!-- 编辑文章 -->
+ 		<action name="editArticle_edit" class="com.suifengwiki.Action.ArticleAction" method="edit">
+ 			<result name="edit">/admin/admin.jsp?page=articleEdit</result>
+ 		</action>
+ 		
+ 		<!-- 保存文章 -->
+ 		<action name="editArticle_save" class="com.suifengwiki.Action.ArticleAction" method="save">
+ 			<result name="save">/admin/admin.jsp?page=articleList</result>
+ 		</action>
+ 		
+ 		<!-- 查询文章 -->
+ 		<action name="article_query" class="com.suifengwiki.Action.ArticleAction" method="query">
+ 			<result name="query" type="redirect">/index.jsp</result>
+ 		</action>
+ 		
+ 		<!-- 所有文章 -->
+ 		<action name="article_list" class="com.suifengwiki.Action.ArticleAction" method="list">
+ 			<result name="list">/admin/admin.jsp?page=articleList</result>
+ 		</action>
+ 		
+ 		
+ 		<!-- admin搜索指定文章 -->
+ 		<action name="admin_listSearch" class="com.suifengwiki.Action.ArticleAction" method="adminListSearch">
+ 			<result name="adminListSearch">/admin/admin.jsp?page=articleList</result>
+ 		</action>
+ 		
+	  		<!-- 前台搜索指定文章 -->
+ 		<action name="listSearch" class="com.suifengwiki.Action.ArticleAction" method="listSearch">
+ 			<result name="listSearch">/index.jsp</result>
+ 		</action>
+ 		
+ 		<!-- 删除文章 -->
+ 		<action name="article_delete" class="com.suifengwiki.Action.ArticleAction" method="delete">
+ 			<result name="delete">/admin/admin.jsp?page=articleList</result>
+ 		</action>
+ 		
+ 		<!-- 修改文章状态 -->
+ 		<action name="article_update" class="com.suifengwiki.Action.ArticleAction" method="stateUpdate">
+ 			<result name="stateUpdate">/admin/admin.jsp?page=articleList</result>
+ 		</action>
+ 		
+ 		<!-- 所有分类 -->
+ 		<action name="kind_list" class="com.suifengwiki.Action.KindAction" method="kindList">
+ 			<result name="kindList">/admin/admin.jsp?page=kindList</result>
+ 		</action>
+ 		
+ 		<!-- 添加分类 -->
+ 		<action name="kind_add" class="com.suifengwiki.Action.KindAction" method="addKind">
+ 			<result name="addKind">/admin/admin.jsp?page=kindList</result>
+ 		</action>
+ 		
+ 		<!-- 修改分类 -->
+ 		<action name="kind_update" class="com.suifengwiki.Action.KindAction" method="updateKind">
+ 			<result name="updateKind">/admin/admin.jsp?page=kindList</result>
+ 		</action>
+ 		
+ 		<!-- 删除分类 -->
+ 		<action name="kind_delete" class="com.suifengwiki.Action.KindAction" method="deleteKind">
+ 			<result name="deleteKind">/admin/admin.jsp?page=kindList</result>
+ 		</action>
+ 		
+ 		<!-- 草稿 -->
+ 		<action name="article_draft" class="com.suifengwiki.Action.ArticleAction" method="draft">
+ 			<result name="draft" >/admin/admin.jsp?page=articleList</result>
+ 		</action>
+ 		
+ 		<!-- 保存草稿 -->
+ 		<action name="article_draft_save" class="com.suifengwiki.Action.ArticleAction" method="draftSave">
+ 			<result name="draftSave" >/admin/admin.jsp?page=articleList</result>
+ 		</action>
+ 		
+ 		<!-- 常规设置 -->
+ 		<action name="article_commonSetup" class="com.suifengwiki.Action.SetupAction" method="commonSetup">
+ 			<result name="commonSetup">/admin/admin.jsp?page=commonSetup</result>
+ 		</action>
+ 		
+ 		<!-- 修改密码 -->
+ 		<action name="article_passSetup" class="com.suifengwiki.Action.SetupAction" method="passSetup">
+ 			<result name="passSetup" type="redirect">
+				<param name="location">/admin/admin.jsp</param>
+ 				<param name="page">passSetup</param>
+			</result>
+ 		</action>
+ 		
+ 		<!-- 首页文章 -->
+ 		<action name="index" class="com.suifengwiki.Action.ArticleAction" method="index">
+ 			<result name="index">/index.jsp</result>
+ 		</action>
+ 		
+ 		<action name="detail" class="com.suifengwiki.Action.ArticleAction" method="detail">
+ 			<result name="detail">/detail.jsp</result>
+ 		</action>
+ 		
+ 		<!-- 预览 -->
+ 		<action name="predetail" class="com.suifengwiki.Action.ArticleAction" method="predetail">
+ 			<result name="predetail">/detail.jsp</result>
+ 		</action>
+ 		
+ 		<action name="imageUpload" class="com.suifengwiki.Action.ActionImageUpload" method="imageUpload"></action>
+ 		
+ 		<action name="getArticle_draft_count" class="com.suifengwiki.Action.ArticleAction" method="getArticle_draft_count"></action>
+ 		
+ 		<action name="websiteSetup" class="com.suifengwiki.Action.SetupAction" method="websiteSetup">
+ 			<result name="websiteSetup">/admin/admin.jsp?page=commonSetup</result>
+ 		</action>
+ 		
+ 		
+    </package>
+</struts>

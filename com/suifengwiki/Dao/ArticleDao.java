@@ -29,34 +29,35 @@ public class ArticleDao {
 	public Boolean articleSave(){
 		
 		//如果存在，先删除，再插入
-		if(article != null && !"".equals(article.getArticleId())){
-			articleDelete();
+		if(article != null && !"0".equals(article.getArticleId()+"")){
+			articleUpdate(article);
+		}else{
+			theme = article.getTheme();
+			content = article.getContent();
+			author = article.getAuthor();
+			articleKindId = article.getArticleKindId();
+			articleTag = article.getArticleTag();
+			state = article.getState();
+			String currentdate = Pubfun.getCurrentDate();
+			String currenttime = Pubfun.getCurrentTime();
+			sql = "insert into article(theme,content,author,articleKindId,articleTag,state,makedate,maketime,modifydate,modifytime) "
+					+ "values('"+ theme +"','"+ content +"','"+ author +"','"+ articleKindId +"','"+ articleTag +"','"+state+"','"+ currentdate +"','"+ currenttime +"','"+ currentdate +"','"+ currenttime +"')";
+			System.out.println(sql);
+			try {
+				PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+				int result = ps.executeUpdate();
+				if(result == -1){
+					flag = false;
+					errorMessage += "insert语句执行失败!";
+				}
+			} catch (SQLException e) {
+				flag = false;
+				errorMessage += e.getMessage();
+				e.printStackTrace();
+			}
+			
 		}
 		
-		theme = article.getTheme();
-		content = article.getContent();
-		author = article.getAuthor();
-		articleKindId = article.getArticleKindId();
-		articleTag = article.getArticleTag();
-		state = article.getState();
-		String currentdate = Pubfun.getCurrentDate();
-		String currenttime = Pubfun.getCurrentTime();
-		sql = "insert into article(theme,content,author,articleKindId,articleTag,state,makedate,maketime,modifydate,modifytime) "
-				+ "values('"+ theme +"','"+ content +"','"+ author +"','"+ articleKindId +"','"+ articleTag +"','"+state+"','"+ currentdate +"','"+ currenttime +"','"+ currentdate +"','"+ currenttime +"')";
-		System.out.println(sql);
-		try {
-			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-			int result = ps.executeUpdate();
-			if(result == -1){
-				flag = false;
-				errorMessage += "insert语句执行失败!";
-			}
-		} catch (SQLException e) {
-			flag = false;
-			errorMessage += e.getMessage();
-			e.printStackTrace();
-		}
-
 		return flag;
 	}
 	
@@ -136,7 +137,7 @@ public class ArticleDao {
 	
 	public Boolean articleUpdate(Article article){
 		
-		sql = "update article set theme='"+ article.getTheme() +"',content='"+ article.getContent() +"',author='"+ article.getAuthor() +"',articleKindId='"+ article.getArticleKindId() +"',state='"+ article.getState() +"' where articleId = '"+ article.getArticleId() +"'";
+		sql = "update article set theme='"+ article.getTheme() +"',content='"+ article.getContent() +"',author='"+ article.getAuthor() +"',articleKindId='"+ article.getArticleKindId() +"',articleTag = '"+ article.getArticleTag() +"',state='"+ article.getState() +"' where articleId = '"+ article.getArticleId() +"'";
 		System.out.println(sql);
 		
 		try {

@@ -16,8 +16,6 @@ public class ActionImageUpload {
 	private String fileContentType;
 	private String fileFileName;
 	
-	
-	
 	public String getFile() {
 		return file;
 	}

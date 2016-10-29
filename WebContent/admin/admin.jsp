@@ -23,7 +23,9 @@
 	<div>
 		<!-- header -->
 		<div id="admin-header">
-			<div id="logo">Wiki · Suifeng</div>
+			<div id="logo">
+				<a href="http://localhost:8080/suifengwiki/admin/admin.jsp">Wiki · Suifeng</a>
+			</div>
 		</div>
 		
 		<!-- middle -->

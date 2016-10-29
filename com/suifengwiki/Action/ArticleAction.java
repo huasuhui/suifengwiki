@@ -3,16 +3,12 @@ package com.suifengwiki.Action;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -216,7 +212,7 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 		List<Map<String,List<Article>>> kindArticleMaps = new ArrayList<Map<String,List<Article>>>();
 		
 		SSRS ssrs = new SSRS();
-		List<List<String>> kindArticleList = ssrs.ExecSQL("select articleKindId,articleId,theme from article order by articleKindId desc");
+		List<List<String>> kindArticleList = ssrs.ExecSQL("select articleKindId,articleId,theme from article where state = '0' order by articleKindId desc");
 		List<List<String>> kindList = ssrs.ExecSQL("select articleKindId,articleKindName from articlekind order by articleKindId");
 		
 		for(int x=0;x<kindList.size();x++){
@@ -255,10 +251,8 @@ public class ArticleAction extends ActionSupport implements ModelDriven<Article>
 		
 		HttpServletRequest request=ServletActionContext.getRequest();
 		request.setCharacterEncoding("UTF-8");
-		String str= new String((request.getParameter("theme")).getBytes("UTF-8"),"UTF-8");
 		
 		String ss=new String(article.getTheme().getBytes("ISO-8859-1"),"utf-8");
-		String tempUserName = URLDecoder.decode(article.getTheme().trim(), "utf-8"); 
 		System.out.println(ss);
 		System.out.println(article);
 		requestMap.put("articleResult", article);
