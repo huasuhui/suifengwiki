@@ -5,9 +5,9 @@
 <html>
 <head>
 <link rel="Stylesheet" type="text/css" href="css/suifengwiki.css">
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+<link href="css/bootstrap.css" rel="stylesheet">
+<script src="js/jquery.js"></script> 
+<script src="js/bootstrap.js"></script> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
