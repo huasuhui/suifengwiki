@@ -25,7 +25,7 @@
 	
 		<!-- header -->
 		<div id="header">
-			<a href="/">Wiki · Suifeng</a>
+			<a href="index">Wiki · Suifeng</a>
 		</div>
 		
 		<!-- category_item -->

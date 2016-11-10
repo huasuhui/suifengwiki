@@ -8,9 +8,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Wiki·Suifeng后台管理</title>
 
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+<link href="../css/bootstrap.css" rel="stylesheet">
+<script src="../js/jquery.js"></script> 
+<script src="../js/bootstrap.js"></script> 
 
 <!-- include summernote css/js-->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
@@ -24,7 +24,7 @@
 		<!-- header -->
 		<div id="admin-header">
 			<div id="logo">
-				<a href="http://localhost:8080/suifengwiki/admin/admin.jsp">Wiki · Suifeng</a>
+				<a href="/suifengwiki/admin/admin.jsp">Wiki · Suifeng</a>
 			</div>
 		</div>
 		
