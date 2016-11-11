@@ -9,7 +9,7 @@
 <script src="js/jquery.js"></script> 
 <script src="js/bootstrap.js"></script> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>${requestScope.articleResult.theme}</title>
 </head>
 <body>
 	<div id="container">

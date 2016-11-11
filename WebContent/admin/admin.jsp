@@ -13,7 +13,7 @@
 <script src="../js/bootstrap.js"></script> 
 
 <!-- include summernote css/js-->
-<link href="../css/summernote.css" rel="stylesheet">
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
 <script src="../js/summernote.js"></script>
 <link href="../css/suifengwiki-admin.css"  rel="stylesheet">
 
