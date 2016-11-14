@@ -99,7 +99,7 @@
 				
 				
 				
-				<input type="hidden" id="content" name="content" value="${requestScope.articleResult.content}">
+				<input type="hidden" id="content" name="content" value='${requestScope.articleResult.content}'>
 				<input type="hidden" id="articleTag" name="articleTag" value="${requestScope.articleResult.articleTag}">
 				<input type="hidden" id="state" name="state" value="${requestScope.articleResult.state}">
 				<input type="hidden" id="articleId" name="articleId" value="${requestScope.articleResult.articleId}">
