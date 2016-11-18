@@ -47,6 +47,7 @@
 			var id = $(this).attr("id");
 			i++;
 			var html = $(this).html();
+			html = html.length >15? html.substr(0, 15)+".." : html;
 			str = str + "<li><a href=\"#"+ id +"\">"+ html +"</a></li>";
 		});
 		str = "<span class=\"toctitle\">Table of Contents</span><ul>" + str + "</ul>";
